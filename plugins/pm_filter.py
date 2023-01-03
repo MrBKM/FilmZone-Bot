@@ -44,7 +44,7 @@ async def next_page(bot, query):
     if int(ad_user) in ADMINS:
         pass
     elif int(req) not in [query.from_user.id, 0]:
-        return await query.answer(Script.ALRT_TXT.format(query.from_user.first_name), show_alert=True)
+        return await query.answer(Script.ALRT_TXT.format(query.from_user.first_name), (query.message.from_user.first_name), show_alert=True)
     try:
         offset = int(offset)
     except:
@@ -347,7 +347,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         if int(ad_user) in ADMINS:
             pass
         elif int(user) != 0 and query.from_user.id != int(user):
-            return await query.answer(Script.ALRT_TXT.format(query.from_user.first_name), show_alert=True)
+            return await query.answer(Script.ALRT_TXT.format(query.from_user.first_name), (query.message.from_user.first_name), show_alert=True)
 
         if not files_:
             return await query.answer('No such file exist.')
